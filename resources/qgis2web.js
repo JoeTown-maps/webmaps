@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-10570591.948831, 4821590.246176, -10540300.221979, 4840451.132707], map.getSize());
+map.getView().fit([-10576577.854235, 4821976.684863, -10535653.931865, 4847457.617659], map.getSize());
 
 //full zooms only
 map.getView().setProperties({constrainResolution: true});
@@ -506,44 +506,6 @@ var Title = new ol.control.Control({
 map.addControl(Title)
     
 //abstract
-
-var Abstract = new ol.control.Control({
-    element: (() => {
-        var titleElement = document.createElement('div');
-        titleElement.className = 'bottom-left-abstract ol-control';
-        titleElement.id = 'abstract';
-
-        var linkElement = document.createElement('a');
-
-        if (20 > 240) {
-            linkElement.setAttribute("onmouseenter", "showAbstract()");
-            linkElement.setAttribute("onmouseleave", "hideAbstract()");
-            linkElement.innerHTML = 'i';
-
-            window.hideAbstract = function() {
-                linkElement.classList.add("project-abstract");
-                linkElement.classList.remove("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'i';
-            }
-
-            window.showAbstract = function() {
-                linkElement.classList.remove("project-abstract");
-                linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'This is the abstract';
-            }
-
-            hideAbstract();
-        } else {
-            linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'This is the abstract';
-        }
-
-        titleElement.appendChild(linkElement);
-        return titleElement;
-    })(),
-    target: 'bottom-left-container'
-});
-map.addControl(Abstract);
 
 
 //geolocate
