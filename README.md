@@ -2,4 +2,4 @@
 
 Saint Joseph Missouri is an amazing place to live, work, or visit.  Here are some web maps that focus on various topics.
 
-<a href="historicdistricts.html">Historic Districts and Properties</a>
+<a href="/historic/districts.html">Historic Districts and Properties</a>
