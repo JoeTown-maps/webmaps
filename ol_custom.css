@@ -1,0 +1,4 @@
+       <style>
+            #map { height: calc(100vh - 175px); }  /* Adjust 120px based on header height */  
+            .ol-popup { width: 350px; } 
+        </style>  
