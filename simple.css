@@ -21,6 +21,7 @@
   --code: #d81b60;
   --preformatted: #444;
   --marked: #ffdd33;
+  --gmarked: #008000;	
   --disabled: #efefef;
 }
 
@@ -559,6 +560,13 @@ mark {
   padding: 2px 5px;
   border-radius: var(--standard-border-radius);
   background-color: var(--marked);
+  color: black;
+}
+
+gmark {
+  padding: 2px 5px;
+  border-radius: var(--standard-border-radius);
+  background-color: var(--gmarked);
   color: black;
 }
 
