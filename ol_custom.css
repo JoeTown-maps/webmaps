@@ -9,7 +9,7 @@ main,
 article,
 section:not([class*="grid"]),
 body > :where(h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, pre, table):not(.is-full-bleed) {
-  max-width: 90ch;     /* or 80ch, 100ch, 65rem, 90%, whatever feels good */
+  width: 90ch;     /* or 80ch, 100ch, 65rem, 90%, whatever feels good */
   /* optionally: */
   /* padding-inline: 2rem; */   /* adjust side padding if you want more/less breathing room */
 }
