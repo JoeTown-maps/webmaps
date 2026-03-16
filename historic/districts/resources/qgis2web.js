@@ -126,9 +126,9 @@ var overlayPopup = new ol.Overlay({
 	autoPan: true
 });
 map.addOverlay(overlayPopup)
-    
-addMoreToggle();
 
+addMoreToggle();    
+    
 var NO_POPUP = 0
 var ALL_FIELDS = 1
 
@@ -183,48 +183,7 @@ function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
     var narrativeText = narratives[currentFeature.get('fid')] || 'No narrative available for this feature.';
     popupText += '<tr>' + marked.parse(narrativeText) + '</tr>';
-    /* for (var i = 0; i < currentFeatureKeys.length; i++) {
-        if (currentFeatureKeys[i] != 'geometry' && currentFeatureKeys[i] != 'layerObject' && currentFeatureKeys[i] != 'idO') {
-            var popupField = '';
-            if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "hidden field") {
-                continue;
-            } else if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "inline label - visible with data") {
-                if (currentFeature.get(currentFeatureKeys[i]) == null) {
-                    continue;
-                }
-            }
-            if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "inline label - always visible" ||
-                layer.get('fieldLabels')[currentFeatureKeys[i]] == "inline label - visible with data") {
-                popupField += '<th>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + '</th><td>';
-            } else {
-                popupField += '<td colspan="2">';
-            }
-            if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "header label - visible with data") {
-                if (currentFeature.get(currentFeatureKeys[i]) == null) {
-                    continue;
-                }
-            }
-            if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "header label - always visible" ||
-                layer.get('fieldLabels')[currentFeatureKeys[i]] == "header label - visible with data") {
-                popupField += '<strong>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + '</strong><br />';
-            }
-            if (layer.get('fieldImages')[currentFeatureKeys[i]] != "ExternalResource") {
-				popupField += (currentFeature.get(currentFeatureKeys[i]) != null ? autolinker.link(currentFeature.get(currentFeatureKeys[i]).toLocaleString()) + '</td>' : '');
-			} else {
-				var fieldValue = currentFeature.get(currentFeatureKeys[i]);
-				if (/\.(gif|jpg|jpeg|tif|tiff|png|avif|webp|svg)$/i.test(fieldValue)) {
-					popupField += (fieldValue != null ? '<img src="images/' + fieldValue.replace(/[\\\/:]/g, '_').trim() + '" /></td>' : '');
-				} else if (/\.(mp4|webm|ogg|avi|mov|flv)$/i.test(fieldValue)) {
-					popupField += (fieldValue != null ? '<video controls><source src="images/' + fieldValue.replace(/[\\\/:]/g, '_').trim() + '" type="video/mp4">Il tuo browser non supporta il tag video.</video></td>' : '');
-				} else if (/\.(mp3|wav|ogg|aac|flac)$/i.test(fieldValue)) {
-                    popupField += (fieldValue != null ? '<audio controls><source src="images/' + fieldValue.replace(/[\\\/:]/g, '_').trim() + '" type="audio/mpeg">Il tuo browser non supporta il tag audio.</audio></td>' : '');
-                } else {
-					popupField += (fieldValue != null ? autolinker.link(fieldValue.toLocaleString()) + '</td>' : '');
-				}
-			}
-            popupText += '<tr>' + currentFeature.get('fid') + " " + popupField + '</tr>';
-        }
-    } */
+
 
     return popupText;
 }
@@ -977,45 +936,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-// Enhance popups with "More..." toggle for long narrative text
-function addMoreToggle() {
-  document.querySelectorAll('#popup-content').forEach(function(content) {
-    // Target the narrative text container (adjust selector if needed)
-    var narrative = content.querySelector('li'); // or more specific: content.innerHTML.match(/narrative/i)
-    if (!narrative) return;
-
-    var fullText = narrative.innerHTML.trim();
-    if (fullText.length <= 300) return; // Skip short text
-
-    var shortText = fullText.substring(0, 300) + '...';
-
-    // Replace with truncated + link
-    narrative.innerHTML = shortText + 
-      ' <a href="#" class="more-toggle" style="color:#2980b9; cursor:pointer; text-decoration:underline;">More...</a>';
-
-    // Toggle handler
-    var toggleLink = narrative.querySelector('.more-toggle');
-    toggleLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (toggleLink.textContent === 'More...') {
-        narrative.innerHTML = fullText + 
-          ' <a href="#" class="more-toggle" style="color:#2980b9; cursor:pointer; text-decoration:underline;">Less</a>';
-      } else {
-        narrative.innerHTML = shortText + 
-          ' <a href="#" class="more-toggle" style="color:#2980b9; cursor:pointer; text-decoration:underline;">More...</a>';
-      }
-    });
-  });
-}
-
-// Run enhancement when popup opens (delay to let OL render)
-map.on('singleclick', function() {
-  //setTimeout(addMoreToggle, 5); // Small delay for popup to appear
-	addMoreToggle();
-});
-
-
 //move controls inside containers, in order
     //zoom
     var zoomControl = document.getElementsByClassName('ol-zoom')[0];
@@ -1051,3 +971,40 @@ map.on('singleclick', function() {
     if (attributionControl) {
         bottomRightContainerDiv.appendChild(attributionControl);
 	}
+
+// Enhance popups with "More..." toggle for long narrative text
+function addMoreToggle() {
+  document.querySelectorAll('.ol-popup-content').forEach(function(content) {
+    // Target the narrative text container (adjust selector if needed)
+    var narrative = content.querySelector('#popup-content'); // or more specific: content.innerHTML.match(/narrative/i)
+    if (!narrative) return;
+
+    var fullText = narrative.innerHTML.trim();
+    if (fullText.length <= 300) return; // Skip short text
+
+    var shortText = fullText.substring(0, 300) + '...';
+
+    // Replace with truncated + link
+    narrative.innerHTML = shortText + 
+      ' <a href="#" class="more-toggle" style="color:#2980b9; cursor:pointer; text-decoration:underline;">More...</a>';
+
+    // Toggle handler
+	content.addEventListener('click', function(e) {
+      if (e.target.classList.contains('more-toggle')) {
+        e.preventDefault();
+        if (e.target.textContent === 'More...') {
+          narrative.innerHTML = fullText + 
+            ' <a href="#" class="more-toggle">Less</a>';
+        } else {
+          narrative.innerHTML = shortText + 
+            ' <a href="#" class="more-toggle">More...</a>';
+        }
+      }
+    });
+  });
+}
+
+// Run enhancement when popup opens (delay to let OL render)
+map.on('singleclick', function() {
+  setTimeout(addMoreToggle, 150); // Small delay for popup to appear
+});
