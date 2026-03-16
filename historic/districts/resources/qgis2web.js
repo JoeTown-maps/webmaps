@@ -976,41 +976,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//move controls inside containers, in order
-    //zoom
-    var zoomControl = document.getElementsByClassName('ol-zoom')[0];
-    if (zoomControl) {
-        topLeftContainerDiv.appendChild(zoomControl);
-    }
-    //geolocate
-    if (typeof geolocateControl !== 'undefined') {
-        topLeftContainerDiv.appendChild(geolocateControl);
-    }
-    //measure
-    if (typeof measureControl !== 'undefined') {
-        topLeftContainerDiv.appendChild(measureControl);
-    }
-    //geocoder
-    var searchbar = document.getElementsByClassName('photon-geocoder-autocomplete ol-unselectable ol-control')[0];
-    if (searchbar) {
-        topLeftContainerDiv.appendChild(searchbar);
-    }
-    //search layer
-    var searchLayerControl = document.getElementsByClassName('search-layer')[0];
-    if (searchLayerControl) {
-        topLeftContainerDiv.appendChild(searchLayerControl);
-    }
-    //scale line
-    var scaleLineControl = document.getElementsByClassName('ol-scale-line')[0];
-    if (scaleLineControl) {
-        scaleLineControl.className += ' ol-control';
-        bottomLeftContainerDiv.appendChild(scaleLineControl);
-    }
-    //attribution
-    var attributionControl = document.getElementsByClassName('bottom-attribution')[0];
-    if (attributionControl) {
-        bottomRightContainerDiv.appendChild(attributionControl);
-
 
 // Enhance popups with "More..." toggle for long narrative text
 function addMoreToggle() {
@@ -1047,3 +1012,40 @@ function addMoreToggle() {
 map.on('singleclick', function() {
   setTimeout(addMoreToggle, 150); // Small delay for popup to appear
 });
+
+
+//move controls inside containers, in order
+    //zoom
+    var zoomControl = document.getElementsByClassName('ol-zoom')[0];
+    if (zoomControl) {
+        topLeftContainerDiv.appendChild(zoomControl);
+    }
+    //geolocate
+    if (typeof geolocateControl !== 'undefined') {
+        topLeftContainerDiv.appendChild(geolocateControl);
+    }
+    //measure
+    if (typeof measureControl !== 'undefined') {
+        topLeftContainerDiv.appendChild(measureControl);
+    }
+    //geocoder
+    var searchbar = document.getElementsByClassName('photon-geocoder-autocomplete ol-unselectable ol-control')[0];
+    if (searchbar) {
+        topLeftContainerDiv.appendChild(searchbar);
+    }
+    //search layer
+    var searchLayerControl = document.getElementsByClassName('search-layer')[0];
+    if (searchLayerControl) {
+        topLeftContainerDiv.appendChild(searchLayerControl);
+    }
+    //scale line
+    var scaleLineControl = document.getElementsByClassName('ol-scale-line')[0];
+    if (scaleLineControl) {
+        scaleLineControl.className += ' ol-control';
+        bottomLeftContainerDiv.appendChild(scaleLineControl);
+    }
+    //attribution
+    var attributionControl = document.getElementsByClassName('bottom-attribution')[0];
+    if (attributionControl) {
+        bottomRightContainerDiv.appendChild(attributionControl);
+
