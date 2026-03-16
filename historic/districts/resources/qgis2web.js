@@ -1011,7 +1011,7 @@ function addMoreToggle() {
 
 // Run enhancement when popup opens (delay to let OL render)
 map.on('singleclick', function() {
-  setTimeout(addMoreToggle, 50); // Small delay for popup to appear
+  setTimeout(addMoreToggle, 5); // Small delay for popup to appear
 });
 
 
