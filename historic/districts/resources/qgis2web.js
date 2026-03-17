@@ -235,7 +235,7 @@ function onPointerMove(evt) {
                     currentFeatureKeys = currentFeature.getKeys();
                     popupText += '<li id="narrative"><table>'
                     popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
-                    popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
+                    popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
                     popupText += '</table></li>';    
                 }
             }
@@ -244,7 +244,7 @@ function onPointerMove(evt) {
             if (doPopup) {
                 popupText += '<li id="narrative"><table>';
                 popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
-                popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
+                popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
                 popupText += '</table></li>';
             }
         }
@@ -374,7 +374,7 @@ function onSingleClickFeatures(evt) {
                         currentFeatureKeys = currentFeature.getKeys();
                         popupText += '<li id="narrative"><table>';
                         popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
-                        popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
+                        popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
                         popupText += '</table></li>';    
                     }
                 }
@@ -383,7 +383,7 @@ function onSingleClickFeatures(evt) {
                 if (doPopup) {
                     popupText += '<li id="narrative"><table>';
                     popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
-                    popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
+                    popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
                     popupText += '</table>';
                 }
             }
@@ -976,7 +976,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function addMoreToggle() {
   document.querySelectorAll('#narrative').forEach(function(content) {
     // Target the narrative text container (adjust selector if needed)
-    var narrative = content.querySelector('p'); // or more specific: content.innerHTML.match(/narrative/i)
+    var narrative = content.querySelector('#ntext'); // or more specific: content.innerHTML.match(/narrative/i)
     if (!narrative) return;
 
     var fullText = narrative.innerHTML.trim();
