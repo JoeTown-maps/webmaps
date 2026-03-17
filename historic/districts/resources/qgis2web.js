@@ -182,7 +182,7 @@ function escapeHtml(unsafe) {
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
     var narrativeText = narratives[currentFeature.get('fid')] || 'No narrative available for this feature.';
-    popupText += '<tr>' + marked.parse(narrativeText) + '</tr>';
+    popupText += '<tr> <div id="ntext">' + marked.parse(narrativeText) + '</div> </tr>';
 
 
     return popupText;
@@ -235,7 +235,7 @@ function onPointerMove(evt) {
                     currentFeatureKeys = currentFeature.getKeys();
                     popupText += '<li id="narrative"><table>'
                     popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
-                    popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
+                    popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
                     popupText += '</table></li>';    
                 }
             }
@@ -244,7 +244,7 @@ function onPointerMove(evt) {
             if (doPopup) {
                 popupText += '<li id="narrative"><table>';
                 popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
-                popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
+                popupText +=  createPopupField(currentFeature, currentFeatureKeys, layer);
                 popupText += '</table></li>';
             }
         }
@@ -374,7 +374,7 @@ function onSingleClickFeatures(evt) {
                         currentFeatureKeys = currentFeature.getKeys();
                         popupText += '<li id="narrative"><table>';
                         popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
-                        popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
+                        popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
                         popupText += '</table></li>';    
                     }
                 }
@@ -383,7 +383,7 @@ function onSingleClickFeatures(evt) {
                 if (doPopup) {
                     popupText += '<li id="narrative"><table>';
                     popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
-                    popupText += '<div id="ntext">' + createPopupField(currentFeature, currentFeatureKeys, layer) + '</div>';
+                    popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
                     popupText += '</table>';
                 }
             }
