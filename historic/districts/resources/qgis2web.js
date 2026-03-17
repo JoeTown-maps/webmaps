@@ -234,7 +234,7 @@ function onPointerMove(evt) {
                     currentFeature = clusteredFeatures[n];
                     currentFeatureKeys = currentFeature.getKeys();
                     popupText += '<li id="narrative"><table>'
-                    popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
+                    //popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
                     popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
                     popupText += '</table></li>';    
                 }
@@ -243,7 +243,7 @@ function onPointerMove(evt) {
             currentFeatureKeys = currentFeature.getKeys();
             if (doPopup) {
                 popupText += '<li id="narrative"><table>';
-                popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
+                //popupText += '<a>' + '<b>' + layer.get('popuplayertitle') + '</b>' + '</a>';
                 popupText +=  createPopupField(currentFeature, currentFeatureKeys, layer);
                 popupText += '</table></li>';
             }
@@ -373,7 +373,7 @@ function onSingleClickFeatures(evt) {
                         currentFeature = clusteredFeatures[n];
                         currentFeatureKeys = currentFeature.getKeys();
                         popupText += '<li id="narrative"><table>';
-                        popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
+                        // popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
                         popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
                         popupText += '</table></li>';    
                     }
@@ -382,7 +382,7 @@ function onSingleClickFeatures(evt) {
                 currentFeatureKeys = currentFeature.getKeys();
                 if (doPopup) {
                     popupText += '<li id="narrative"><table>';
-                    popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
+                    // popupText += '<a><b>' + layer.get('popuplayertitle') + '</b></a>';
                     popupText += createPopupField(currentFeature, currentFeatureKeys, layer);
                     popupText += '</table>';
                 }
