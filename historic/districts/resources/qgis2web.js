@@ -976,7 +976,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function addMoreToggle() {
   document.querySelectorAll('#narrative').forEach(function(content) {
     // Target the narrative text container (adjust selector if needed)
-    var narrative = content.querySelector('li'); // or more specific: content.innerHTML.match(/narrative/i)
+    var narrative = content.querySelector('p'); // or more specific: content.innerHTML.match(/narrative/i)
     if (!narrative) return;
 
     var fullText = narrative.innerHTML.trim();
