@@ -980,9 +980,9 @@ function addMoreToggle() {
     if (!narrative) return;
 
     var fullText = narrative.innerHTML.trim();
-    if (fullText.length <= 300) return; // Skip short text
+    if (fullText.indexOf("^more^") >= 0;) return; // Skip short text
 
-    var shortText = fullText.substring(0, 300) + '...';
+    var shortText = fullText.substring(0, fullText.indexOf("^more^")) + '...';
 
     // Replace with truncated + link
     narrative.innerHTML = shortText + 
