@@ -20,6 +20,12 @@ popupText += '</table></li>';
 ```
 
 ### index.html
+Right before `<title>`, add:
+```
+<style>
+    #map { height: calc(100vh - 175px); }  /* Adjust map size so header and footer fit in view window*/   
+</style>
+'''
 Right after `<body>`, paste:  
 ```
 <div id="header" style="background-color: #2c3e50; color: white; padding: 10px; text-align: center; font-family: Arial, sans-serif;">  
