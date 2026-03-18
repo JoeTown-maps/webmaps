@@ -71,6 +71,12 @@
         <script src="./layers/layers.js" type="text/javascript"></script> 
         <script src="./resources/Autolinker.min.js"></script>
         <script src="./resources/qgis2web.js"></script>  
+		<script>
+			// Run enhancement when popup opens (delay to let OL render)
+			map.on('singleclick', function() {
+   				addMoreToggle();
+			});
+		</script>
         <div id="footer" style="background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 12px; border-top: 1px solid #ddd; margin-top: 20px;">
           <p>Data from public sources</p>
           <p>Created with QGIS & OpenLayers | Questions? Contact joetownmaps@gmail.com</p>
