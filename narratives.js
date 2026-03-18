@@ -18,11 +18,6 @@ async function loadNarratives() {
 
 loadNarratives();
 
-// Run enhancement when popup opens (delay to let OL render)
-map.on('singleclick', function() {
-   addMoreToggle();
-});
-
 function createNarrativePopup(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
     var narrativeText = narratives[currentFeature.get('fid')] || 'No narrative available for this feature.';
