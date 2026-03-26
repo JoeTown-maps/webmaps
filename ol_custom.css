@@ -35,7 +35,7 @@ body > :where(h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, pre, table):not(.is
   background-color: lightgray;
 }
 
-.parent > h1, .child {
+.parent > h4, .child {
   margin: 10px;
   padding: 5px;
 }
@@ -44,7 +44,7 @@ body > :where(h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, pre, table):not(.is
   background: white;
 }
 
-.child > h2, p {
+.child > b, p {
   margin: 4px;
   font-size: 90%;
 }
